@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import { Grid, GridItem, Show } from '@chakra-ui/react'
+import Navbar from "./Navbar";
 
 interface LayoutProps {
     
@@ -13,8 +14,8 @@ const Layout: FunctionComponent<LayoutProps> = () => {
           }}
             gap={1}
         >
-            <GridItem area={'nav'} bg="yellow.300">
-                Nav
+            <GridItem area={'nav'}>
+                <Navbar />
             </GridItem>
             <Show above="lg">
                 <GridItem area={'sidebar'} bg="green.300">
