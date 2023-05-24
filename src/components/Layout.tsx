@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { Grid, GridItem, Show } from '@chakra-ui/react'
 import Navbar from "./Navbar";
+import GameGrid from "./GameGrid";
 
 interface LayoutProps {
     
@@ -18,12 +19,12 @@ const Layout: FunctionComponent<LayoutProps> = () => {
                 <Navbar />
             </GridItem>
             <Show above="lg">
-                <GridItem area={'sidebar'} bg="green.300">
+                <GridItem area={'sidebar'}>
                     Sidebar
                 </GridItem>
             </Show>
-            <GridItem area={'main'} bg="orange.300">
-                Main
+            <GridItem area={'main'}>
+                <GameGrid />
             </GridItem>
         </Grid>
     );
