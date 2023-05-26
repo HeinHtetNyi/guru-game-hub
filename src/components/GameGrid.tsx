@@ -10,6 +10,8 @@ interface GameGridProps {
 const GameGrid: FunctionComponent<GameGridProps> = () => {
     const {games, error} = useGames()
 
+    console.log(games)
+
     return (  
         <div>
             {error && <Text color={"red"} fontSize={"xl"}>{error}</Text>}
