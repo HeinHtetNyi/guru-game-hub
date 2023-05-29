@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Card, CardBody, HStack, Heading, Image, Text } from "@chakra-ui/react";
+import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
 import { Game } from "../types/GameTypes";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
@@ -13,7 +13,7 @@ const GameCard: FunctionComponent<GameCardProps> = ({
     game,
 }) => {
     return (  
-        <Card borderRadius={10} overflow={"hidden"}>
+        <Card width="100%" borderRadius={10} overflow={"hidden"}>
             <Image src={getCroppedImageUrl(game.background_image)} />
             <CardBody>
                 <Heading size={"md"} >{game.name}</Heading>
