@@ -6,10 +6,12 @@ import { Genre } from "../types/GenreTypes";
 
 interface Props {
     onSelectGenre: (genre: Genre) => void
+    selectedGenre: Genre | null
 }
 
 const GenreList: FunctionComponent<Props> = ({
-    onSelectGenre
+    onSelectGenre,
+    selectedGenre,
 }) => {
     const {genres, error, isLoading} = useGenres();
 
@@ -32,6 +34,7 @@ const GenreList: FunctionComponent<Props> = ({
                                 textAlign="left"
                                 whiteSpace="normal"
                                 variant="link"
+                                fontWeight={genre.id === selectedGenre?.id ? "bold" : ""}
                             >
                                 {genre.name}
                             </Button>

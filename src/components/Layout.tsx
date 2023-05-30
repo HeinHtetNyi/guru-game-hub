@@ -31,6 +31,7 @@ const Layout: FunctionComponent<LayoutProps> = () => {
                 <GridItem area={'sidebar'}>
                     <GenreList 
                         onSelectGenre={setSelectedGenre}
+                        selectedGenre={selectedGenre}
                     />
                 </GridItem>
             </Show>
