@@ -1,8 +1,4 @@
-export interface Platform {
-    id: number;
-    name: string;
-    slug: string;
-}
+import { Platform } from "./PlatformTypes"
 
 export interface Game {
     id: number
