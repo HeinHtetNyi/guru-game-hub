@@ -1,3 +1,4 @@
+import { Genre } from "./GenreTypes"
 import { Platform } from "./PlatformTypes"
 
 export interface Game {
@@ -6,4 +7,9 @@ export interface Game {
     background_image: string
     parent_platforms: {platform: Platform}[]
     metacritic: number
+}
+
+export interface GameQueryParams {
+    genre: Genre | null,
+    platform: Platform | null
 }

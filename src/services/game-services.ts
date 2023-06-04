@@ -1,13 +1,12 @@
-import { Genre } from "../types/GenreTypes";
-import { Platform } from "../types/PlatformTypes";
+import { GameQueryParams } from "../types/GameTypes";
 import apiClient from "./api-client";
 
 export default class GameServices {
-    public static getGamesData(selectedGenre: Genre | null, selectedPlatform: Platform | null) {
+    public static getGamesData(gameQueryParams: GameQueryParams) {
         return apiClient.get("/games", 
             {params: {
-                genres: selectedGenre?.id,
-                platforms: selectedPlatform?.id,
+                genres: gameQueryParams?.genre?.id,
+                platforms: gameQueryParams?.platform?.id,
             }}
         )
     }

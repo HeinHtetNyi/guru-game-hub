@@ -6,6 +6,7 @@ import GenreList from "./GenreList";
 import { Genre } from "../types/GenreTypes";
 import PlatFormSelector from "./PlatformSelector";
 import { Platform } from "../types/PlatformTypes";
+import { GameQueryParams } from "../types/GameTypes";
 
 interface LayoutProps {
     
@@ -13,8 +14,7 @@ interface LayoutProps {
  
 const Layout: FunctionComponent<LayoutProps> = () => {
 
-    const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
-    const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null)
+    const [gameQueryParams, setGameQueryParams] = useState<GameQueryParams>({} as GameQueryParams)
 
     return (  
         <Grid templateAreas={{
@@ -33,19 +33,18 @@ const Layout: FunctionComponent<LayoutProps> = () => {
             <Show above="lg">
                 <GridItem area={'sidebar'}>
                     <GenreList 
-                        onSelectGenre={setSelectedGenre}
-                        selectedGenre={selectedGenre}
+                        onSelectGenre={(genre: Genre) => setGameQueryParams({...gameQueryParams, genre})}
+                        selectedGenre={gameQueryParams?.genre}
                     />
                 </GridItem>
             </Show>
             <GridItem area={'main'}>
                 <PlatFormSelector 
-                    onSelectPlatform={setSelectedPlatform} 
-                    selectedPlatform={selectedPlatform}
+                    onSelectPlatform={(platform: Platform) => setGameQueryParams({...gameQueryParams, platform})} 
+                    selectedPlatform={gameQueryParams?.platform}
                 />
                 <GameGrid 
-                    selectedGenre={selectedGenre}
-                    selectedPlatform={selectedPlatform}
+                   gameQueryParams={gameQueryParams}
                 />
             </GridItem>
         </Grid>

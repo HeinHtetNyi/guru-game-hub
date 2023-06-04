@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Game } from '../types/GameTypes';
+import { Game, GameQueryParams } from '../types/GameTypes';
 import GameServices from '../services/game-services';
-import { Genre } from '../types/GenreTypes';
-import { Platform } from '../types/PlatformTypes';
 
 const useGames = (
-    selectedGenre: Genre | null,
-    selectedPlatform: Platform | null,
+    gameQueryParams: GameQueryParams,
     deps?: any[]
 ) => {
     const [games, setGames] = useState<Game[]>([])
@@ -15,7 +12,7 @@ const useGames = (
 
     useEffect(() => {
         setIsLoading(true)
-        GameServices.getGamesData(selectedGenre, selectedPlatform)
+        GameServices.getGamesData(gameQueryParams)
         .then(res => {
             setGames(res.data.results)
             setIsLoading(false)
