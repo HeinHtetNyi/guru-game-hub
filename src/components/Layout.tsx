@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import { Grid, GridItem, Show } from '@chakra-ui/react'
+import { Grid, GridItem, HStack, Show } from '@chakra-ui/react'
 import Navbar from "./Navbar";
 import GameGrid from "./GameGrid";
 import GenreList from "./GenreList";
@@ -7,6 +7,7 @@ import { Genre } from "../types/GenreTypes";
 import PlatFormSelector from "./PlatformSelector";
 import { Platform } from "../types/PlatformTypes";
 import { GameQueryParams } from "../types/GameTypes";
+import SortSelector from "./SortSelector";
 
 interface LayoutProps {
     
@@ -39,10 +40,16 @@ const Layout: FunctionComponent<LayoutProps> = () => {
                 </GridItem>
             </Show>
             <GridItem area={'main'}>
-                <PlatFormSelector 
-                    onSelectPlatform={(platform: Platform) => setGameQueryParams({...gameQueryParams, platform})} 
-                    selectedPlatform={gameQueryParams?.platform}
-                />
+                <HStack spacing={5}>
+                    <PlatFormSelector 
+                        onSelectPlatform={(platform: Platform) => setGameQueryParams({...gameQueryParams, platform})} 
+                        selectedPlatform={gameQueryParams?.platform}
+                    />
+                    <SortSelector 
+                        onSelectSort={(sort: String) => setGameQueryParams({...gameQueryParams, sort: sort})}
+                        selectedSort={gameQueryParams?.sort}
+                    />
+                </HStack>
                 <GameGrid 
                    gameQueryParams={gameQueryParams}
                 />

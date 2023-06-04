@@ -7,6 +7,7 @@ export default class GameServices {
             {params: {
                 genres: gameQueryParams?.genre?.id,
                 platforms: gameQueryParams?.platform?.id,
+                ordering: gameQueryParams?.sort
             }}
         )
     }
