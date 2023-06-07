@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import { Box, Flex, Grid, GridItem, HStack, Show } from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem, HStack, Heading, Show } from '@chakra-ui/react'
 import Navbar from "./Navbar";
 import GameGrid from "./GameGrid";
 import GenreList from "./GenreList";
@@ -8,6 +8,7 @@ import PlatFormSelector from "./PlatformSelector";
 import { Platform } from "../types/PlatformTypes";
 import { GameQueryParams } from "../types/GameTypes";
 import SortSelector from "./SortSelector";
+import GameHeading from "./GameHeading";
 
 interface LayoutProps {
     
@@ -42,18 +43,21 @@ const Layout: FunctionComponent<LayoutProps> = () => {
                 </GridItem>
             </Show>
             <GridItem area={'main'}>
-                <Flex paddingLeft={10}>
-                    <Box marginRight={5}>
-                        <PlatFormSelector 
-                            onSelectPlatform={(platform: Platform) => setGameQueryParams({...gameQueryParams, platform})} 
-                            selectedPlatform={gameQueryParams?.platform}
+                <Box paddingLeft={10}>
+                    <GameHeading gameQueryParams={gameQueryParams} />
+                    <Flex>
+                        <Box marginRight={5}>
+                            <PlatFormSelector 
+                                onSelectPlatform={(platform: Platform) => setGameQueryParams({...gameQueryParams, platform})} 
+                                selectedPlatform={gameQueryParams?.platform}
+                            />
+                        </Box>
+                        <SortSelector 
+                            onSelectSort={(sort: String) => setGameQueryParams({...gameQueryParams, sort: sort})}
+                            selectedSort={gameQueryParams?.sort}
                         />
-                    </Box>
-                    <SortSelector 
-                        onSelectSort={(sort: String) => setGameQueryParams({...gameQueryParams, sort: sort})}
-                        selectedSort={gameQueryParams?.sort}
-                    />
-                </Flex>
+                    </Flex>
+                </Box>
                 <GameGrid 
                    gameQueryParams={gameQueryParams}
                 />
