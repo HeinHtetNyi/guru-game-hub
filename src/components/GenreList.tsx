@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Button, HStack, Image, List, ListItem, Spinner } from "@chakra-ui/react";
+import { Button, HStack, Heading, Image, List, ListItem, Spinner } from "@chakra-ui/react";
 import { getCroppedImageUrl } from "../services/image-urls";
 import useGenres from "../hooks/useGenres";
 import { Genre } from "../types/GenreTypes";
@@ -19,6 +19,7 @@ const GenreList: FunctionComponent<Props> = ({
 
     return (  
         <List paddingX="10px">
+            <Heading fontSize={25} marginBottom={5}>Genres</Heading>
             {
                 genres.map((genre: Genre) => (
                     <ListItem paddingY={"10px"} key={genre.id}>
@@ -26,6 +27,7 @@ const GenreList: FunctionComponent<Props> = ({
                             <Image 
                                 boxSize="32px"
                                 borderRadius={8}
+                                objectFit={"cover"}
                                 src={getCroppedImageUrl(genre.image_background)}
                             />
                             <Button 

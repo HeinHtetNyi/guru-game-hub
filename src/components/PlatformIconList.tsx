@@ -1,5 +1,4 @@
 import { FunctionComponent } from "react";
-import { Platform } from "../types/GameTypes";
 import { HStack, Icon } from "@chakra-ui/react";
 import {
     FaWindows,
@@ -13,6 +12,7 @@ import { MdPhoneIphone } from 'react-icons/md'
 import { SiNintendo } from 'react-icons/si'
 import { BsGlobe } from 'react-icons/bs'
 import { IconType } from "react-icons";
+import { Platform } from "../types/PlatformTypes";
 
 interface PlatformIconListProps {
     platforms: Platform[]   

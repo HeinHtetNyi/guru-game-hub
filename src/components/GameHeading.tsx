@@ -11,7 +11,7 @@ const GameHeading: FunctionComponent<GameHeadingProps> = ({
 }) => {
     const heading = `${gameQueryParams.platform?.name || ""} ${gameQueryParams.genre?.name || ""} Games`
     return (  
-        <Heading marginY={10} fontSize={20}>
+        <Heading marginBottom={10} fontSize={25}>
             {heading}
         </Heading>
     );
