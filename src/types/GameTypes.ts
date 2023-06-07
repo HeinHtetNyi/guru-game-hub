@@ -13,4 +13,5 @@ export interface GameQueryParams {
     genre: Genre | null,
     platform: Platform | null
     sort: String | null
+    searchText: String | null
 }

@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import { Grid, GridItem, HStack, Show } from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem, HStack, Show } from '@chakra-ui/react'
 import Navbar from "./Navbar";
 import GameGrid from "./GameGrid";
 import GenreList from "./GenreList";
@@ -29,7 +29,9 @@ const Layout: FunctionComponent<LayoutProps> = () => {
             }}
         >
             <GridItem area={'nav'}>
-                <Navbar />
+                <Navbar 
+                    onSearch={(searchText: String) => setGameQueryParams({...gameQueryParams, searchText})}
+                />
             </GridItem>
             <Show above="lg">
                 <GridItem area={'sidebar'}>
@@ -40,16 +42,18 @@ const Layout: FunctionComponent<LayoutProps> = () => {
                 </GridItem>
             </Show>
             <GridItem area={'main'}>
-                <HStack spacing={5}>
-                    <PlatFormSelector 
-                        onSelectPlatform={(platform: Platform) => setGameQueryParams({...gameQueryParams, platform})} 
-                        selectedPlatform={gameQueryParams?.platform}
-                    />
+                <Flex paddingLeft={10}>
+                    <Box marginRight={5}>
+                        <PlatFormSelector 
+                            onSelectPlatform={(platform: Platform) => setGameQueryParams({...gameQueryParams, platform})} 
+                            selectedPlatform={gameQueryParams?.platform}
+                        />
+                    </Box>
                     <SortSelector 
                         onSelectSort={(sort: String) => setGameQueryParams({...gameQueryParams, sort: sort})}
                         selectedSort={gameQueryParams?.sort}
                     />
-                </HStack>
+                </Flex>
                 <GameGrid 
                    gameQueryParams={gameQueryParams}
                 />

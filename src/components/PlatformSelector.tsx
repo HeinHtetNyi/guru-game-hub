@@ -23,7 +23,7 @@ const PlatFormSelector: FunctionComponent<Props> = ({
             <MenuList>
                 {
                     platforms.map(platform => (
-                        <MenuItem onClick={() => {onSelectPlatform(platform)}} value={platform.id}>{platform.name}</MenuItem>
+                        <MenuItem onClick={() => {onSelectPlatform(platform)}} value={platform.id} key={platform.id}>{platform.name}</MenuItem>
                     ))
                 }
             </MenuList>
